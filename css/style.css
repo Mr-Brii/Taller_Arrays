@@ -1,0 +1,244 @@
+:root {
+    color-scheme: light;
+    --background: #DCE4EC;
+    --surface: #CBD5E1;
+    --field: #FFFFFF;
+    --table-surface: #E2E8F0;
+    --border: #1E293B;
+    --accent: #06B6D4;
+    --button: #FACC15;
+    --text: #0F172A;
+    --muted: #334155;
+    --pixel-shadow: 6px 6px 0 var(--border);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: min(900px, calc(100% - 32px));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: clamp(24px, 6vw, 56px);
+    color: var(--text);
+    background-color: var(--background);
+    background-image:
+        linear-gradient(rgba(30, 41, 59, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.06) 1px, transparent 1px);
+    background-size: 16px 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.65;
+}
+
+body::before {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: var(--background);
+    content: "";
+}
+
+body > * {
+    position: relative;
+}
+
+h1,
+h2 {
+    line-height: 1.25;
+}
+
+h1 {
+    margin: 0 0 24px;
+    padding: 18px 20px;
+    border: 3px solid var(--border);
+    background: var(--accent);
+    box-shadow: var(--pixel-shadow);
+    color: var(--text);
+    font-size: clamp(1.45rem, 5vw, 2.2rem);
+    text-shadow: 2px 2px 0 rgba(15, 23, 42, 0.35);
+    text-transform: uppercase;
+}
+
+h2 {
+    margin: 32px 0 12px;
+    color: var(--accent);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    text-transform: uppercase;
+}
+
+p {
+    color: var(--muted);
+}
+
+a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--accent);
+}
+
+ol {
+    display: grid;
+    gap: 12px;
+    padding-left: 32px;
+}
+
+ol li {
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    box-shadow: 3px 3px 0 var(--border);
+}
+
+ol li::marker {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+input,
+button {
+    min-height: 46px;
+    border: 3px solid var(--border);
+    border-radius: 0;
+    font: inherit;
+}
+
+input {
+    width: 100%;
+    padding: 9px 12px;
+    background: var(--field);
+    color: var(--text);
+    box-shadow: 3px 3px 0 rgba(30, 41, 59, 0.2);
+}
+
+input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+button {
+    padding: 8px 18px;
+    background: var(--accent);
+    box-shadow: 4px 4px 0 var(--border);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 100ms steps(2, end), box-shadow 100ms steps(2, end);
+}
+
+button:hover {
+    filter: brightness(1.08);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--border);
+}
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+    align-items: end;
+    gap: 12px 16px;
+    padding: 20px;
+    border: 3px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--pixel-shadow);
+}
+
+form label {
+    display: grid;
+    gap: 6px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+form button {
+    grid-column: 1 / -1;
+    justify-self: start;
+    background: var(--button);
+    color: var(--text);
+}
+
+ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 24px;
+}
+
+ul li {
+    padding: 8px 12px;
+    border-left: 5px solid var(--accent);
+    background: var(--surface);
+}
+
+#cantidad,
+#total {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 14px;
+    border: 2px dashed var(--accent);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 700;
+}
+
+#total {
+    border-color: var(--border);
+    background: var(--accent);
+}
+
+table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border: 3px solid var(--border);
+    border-collapse: collapse;
+    background: var(--table-surface);
+    box-shadow: var(--pixel-shadow);
+}
+
+th,
+td {
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: var(--accent);
+    color: var(--text);
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(203, 213, 225, 0.55);
+}
+
+@media (max-width: 520px) {
+    body {
+        width: min(100% - 20px, 900px);
+        padding: 28px 18px;
+    }
+
+    h1 {
+        padding: 14px;
+    }
+
+    form {
+        padding: 16px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
