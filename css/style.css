@@ -102,6 +102,7 @@ ol li::marker {
 }
 
 input,
+select,
 button {
     min-height: 46px;
     border: 3px solid var(--border);
@@ -109,7 +110,8 @@ button {
     font: inherit;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 9px 12px;
     background: var(--field);
@@ -118,6 +120,11 @@ input {
 }
 
 input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+select:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
 }
@@ -224,6 +231,97 @@ tbody tr:nth-child(even) {
     background: rgba(203, 213, 225, 0.55);
 }
 
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.tarjeta,
+.contenedor {
+    padding: 18px;
+    border: 3px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--pixel-shadow);
+}
+
+.tarjeta h3 {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.tarjeta p {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+main {
+    display: grid;
+    gap: 24px;
+}
+
+.contenedor h2 {
+    margin-top: 0;
+}
+
+.grupo {
+    display: grid;
+    gap: 6px;
+}
+
+.grupo label,
+.filtros label {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+    gap: 10px 16px;
+}
+
+.filtros input,
+.filtros select {
+    min-width: 0;
+}
+
+.tabla-contenedor {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#formularioCita {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+#formularioCita br {
+    display: none;
+}
+
+#formularioCita button {
+    justify-self: start;
+}
+
+hr {
+    margin: 32px 0;
+    border: 0;
+    border-top: 3px dashed var(--border);
+}
+
+footer {
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 2px solid var(--border);
+    text-align: center;
+}
+
 @media (max-width: 520px) {
     body {
         width: min(100% - 20px, 900px);
@@ -240,5 +338,14 @@ tbody tr:nth-child(even) {
 
     button {
         width: 100%;
+    }
+
+    .filtros {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tarjeta,
+    .contenedor {
+        padding: 14px;
     }
 }
